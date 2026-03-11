@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+*.tmp
+
+# Large media — server-side only
+music-list/*.mp4
+music-list/*.mp3
+video/*.mp4
+video/*.mov

@@ -1,0 +1,202 @@
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Slab', serif;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* ── HERO SECTION ── */
+.hero-section {
+    position: relative;
+    background-image: url(img/bg-2.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* ── TOP LOGO ── */
+.top-logo {
+    max-width: 660px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.top-logo img {
+    width: 100%;
+    height: auto;
+    padding: 35px;
+    filter: brightness(1.25) contrast(1.1) saturate(1.2) drop-shadow(0 0 8px rgba(255,255,255,0.4));
+}
+
+/* ── NAVBAR / HANGING SIGN ── */
+.navbar {
+    position: absolute;
+    top: 58%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.navbar-nav {
+    position: absolute;
+    background-image: url(img/thumb_Hanging-sign-2.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 230px;
+    height: 200px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform-origin: top center;
+    animation: signSway 4s ease-in-out infinite;
+}
+
+@keyframes signSway {
+    0%   { transform: perspective(400px) rotateX(-6deg); }
+    50%  { transform: perspective(400px) rotateX(6deg);  }
+    100% { transform: perspective(400px) rotateX(-6deg); }
+}
+
+.navbar-nav li:first-child {
+    margin-top: 30px;
+}
+
+.nav-link {
+    cursor: pointer;
+    display: inline-block;
+    color: #d3e814;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.8;
+    outline: none;
+    text-decoration: none;
+    text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange,
+        4px -5px 6px yellow, -4px -10px 10px yellow, 0 -10px 30px yellow;
+    animation: 2s Blazing infinite alternate linear;
+}
+
+@keyframes Blazing {
+    0% {
+        text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 0 0 0 yellow,
+            0 0 5px yellow, -2px -5px 5px yellow, 4px -10px 10px yellow;
+    }
+    50% {
+        text-shadow: 0 3px 20px red, 0 0 30px red, 0 0 20px orange,
+            0 0 5px yellow, -2px -5px 5px yellow;
+    }
+    100% {
+        text-shadow: 0 3px 20px red, 0 0 20px red, 0 0 10px orange, 0 0 0 yellow,
+            0 0 5px yellow, -2px -5px 5px yellow, 4px -10px 10px yellow;
+    }
+}
+
+/* ── BILLBOARD (desktop only) ── */
+/* Centered under the top-left logo (logo max-width: 550px, billboard: 300px → (550-300)/2 = 125px) */
+.billborad {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    bottom: 0;
+    left: 125px;
+    transform: scale(0.8);
+    transform-origin: bottom center;
+    z-index: 2;
+}
+
+.billboard-image {
+    width: 100%;
+    height: 400px;
+}
+
+.gif-image {
+    position: absolute;
+    width: 100%;
+    height: 330px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    transition: opacity .3s linear, visibility .3s linear;
+    border-radius: 10px;
+}
+
+.landbot {
+    position: absolute;
+    width: 100%;
+    height: 330px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.d-none {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ── MOBILE: hide chatbot entirely ── */
+.desktop-only {
+    display: block;
+}
+
+@media only screen and (max-width: 768px) {
+    /* Billboard + chatbot completely gone on mobile */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* Center the nav sign on mobile */
+    .navbar {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .navbar-nav {
+        width: 180px;
+        height: 160px;
+    }
+
+    .nav-link {
+        font-size: 20px;
+        line-height: 1.8;
+    }
+
+    /* Shrink logo on small screens */
+    .top-logo {
+        max-width: 260px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar-nav {
+        width: 150px;
+        height: 140px;
+    }
+
+    .nav-link {
+        font-size: 18px;
+    }
+}
