@@ -101,15 +101,40 @@
     }
     #fade.active { opacity: 1; }
 
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      .sign-link { width: 40vw; min-width: 100px; }
+    /* ── Mobile nav overlay ── */
+    #mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 3rem 2rem 4rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 70%, transparent 100%);
+    }
+    #mobile-nav a {
+      display: block;
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    #mobile-nav a:last-child { border-bottom: none; }
+    #mobile-nav a:active { color: #c8a96e; }
+
+    @media (max-width: 768px) {
+      #sign-links { display: none; }
+      #mobile-nav { display: block; }
+      #bg-video { object-position: 60% center; }
     }
   </style>
 </head>
 <body>
 
-  <video id="bg-video" autoplay muted playsinline loop preload="auto">
+  <video id="bg-video" autoplay muted playsinline loop preload="auto" poster="img/home-bg.png">
     <source src="video/home.mp4" type="video/mp4">
   </video>
 
@@ -117,6 +142,13 @@
     <a class="sign-link" id="link-bio"       href="marketing.html">Biography</a>
     <a class="sign-link" id="link-portfolio" href="rbj-portfolio.html">Portfolio</a>
     <a class="sign-link" id="link-music"     href="music.html">Music</a>
+  </div>
+
+  <!-- Mobile navigation overlay -->
+  <div id="mobile-nav">
+    <a href="marketing.html">Biography</a>
+    <a href="rbj-portfolio.html">Portfolio</a>
+    <a href="music.html">Music</a>
   </div>
 
   <div id="fade"></div>
@@ -128,8 +160,8 @@
     video.addEventListener('loadedmetadata', () => { video.playbackRate = 0.44; });
     video.addEventListener('play', () => { video.playbackRate = 0.44; });
 
-    // Sign word clicked — fade to black and navigate
-    document.querySelectorAll('.sign-link').forEach(link => {
+    // All nav links — fade to black and navigate
+    document.querySelectorAll('.sign-link, #mobile-nav a').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const dest = link.getAttribute('href');
