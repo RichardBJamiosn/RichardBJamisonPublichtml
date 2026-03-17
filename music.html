@@ -51,15 +51,15 @@
 
   <!-- TRACKS — accordion dropdown player -->
   <section class="tracks-section" id="tracks">
-    <div class="tracks-header reveal">
+    <div class="tracks-header reveal" id="tracks-toggle" style="cursor: pointer;">
       <div>
         <span class="tracks-label">Discography</span>
-        <h2 class="tracks-heading">Tracks Recorded On</h2>
+        <h2 class="tracks-heading">Tracks I've Worked On</h2>
       </div>
-      <p class="tracks-meta">10 tracks &nbsp;·&nbsp; Click to expand</p>
+      <p class="tracks-meta" id="tracks-meta-text">10 tracks &nbsp;·&nbsp; Click to expand &#9660;</p>
     </div>
 
-    <div class="track-accordion">
+    <div class="track-accordion" id="track-accordion" style="display: none;">
 
       <div class="track-item" data-index="0">
         <div class="track-header">
@@ -246,6 +246,19 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Master toggle — show/hide full track list
+    const tracksToggle   = document.getElementById('tracks-toggle');
+    const trackAccordion = document.getElementById('track-accordion');
+    const tracksMetaText = document.getElementById('tracks-meta-text');
+    let listOpen = false;
+    tracksToggle.addEventListener('click', () => {
+      listOpen = !listOpen;
+      trackAccordion.style.display = listOpen ? 'block' : 'none';
+      tracksMetaText.innerHTML = listOpen
+        ? '10 tracks &nbsp;·&nbsp; Click to collapse &#9650;'
+        : '10 tracks &nbsp;·&nbsp; Click to expand &#9660;';
+    });
 
     // Accordion — click header to expand/collapse player
     document.querySelectorAll('.track-item').forEach(item => {

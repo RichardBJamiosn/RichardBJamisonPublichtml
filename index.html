@@ -1,68 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ONLINE PORTFOLIO OF Richard B Jamison" />
-    <meta name="copyright" content="Copyright(c)2012-2032, Richard B Jamison (www.richardbjamison.com)" />
-    <meta name="classification" content="marketing, commercial design, project management. web design portfolios, digital art, creative services, music" />
-    <meta name="author" content="Richard B Jamison" />
-    <meta name="keywords" content="Richard Jamison, Richard B Jamison, relationship development, networking, sales, marketing, commercial real estate, commercial design, lounge design, bar design, cocktail program development, management, web design, SEO, sales funnel, marketing consultant, project management, drums, drummer, trumpet, musician" />
-    <title>Richard B Jamison &bull; Marketing &amp; Web/SEO Consultant &bull; Online Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Richard B. Jamison — Online Portfolio">
+  <meta name="author" content="Richard B Jamison">
+  <meta name="keywords" content="Richard Jamison, Richard B Jamison, marketing, commercial real estate, web design, SEO, drums, drummer, trumpet, musician">
+  <title>Richard B. Jamison</title>
+  <link rel="icon" href="img/ico/favicon.ico">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    html, body {
+      width: 100%; height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* ── Full-screen background video ── */
+    #bg-video {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -44%);
+      min-width: 100vw;
+      min-height: 100vh;
+      width: auto; height: auto;
+      object-fit: cover;
+      z-index: 1;
+      clip-path: inset(0 0 5% 0);
+    }
+
+    /* ── Sign link hotspots ── */
+    /*
+      Positioned over the three words on the hanging sign.
+      Sign is center-left of the image, roughly 33–55% from left, 35–62% from top.
+      Adjust top/left if any word is slightly off.
+    */
+    #sign-links {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .sign-link {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: all;
+      cursor: pointer;
+      text-decoration: none;
+
+      width: 10vw;
+      min-width: 80px;
+      height: 5vh;
+      min-height: 24px;
+
+      background: rgba(255, 255, 255, 0);
+      border-radius: 4px;
+      transition: background 0.2s, box-shadow 0.2s;
+
+      font-family: Georgia, serif;
+      font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+      color: rgba(255, 255, 255, 0);
+      letter-spacing: 0.05em;
+    }
+
+    .sign-link:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0);
+    }
+
+    #link-bio {
+      top: 52%;
+      left: 56%;
+      transform: translate(-50%, -50%);
+    }
+    #link-portfolio {
+      top: 58%;
+      left: 56%;
+      transform: translate(-50%, -50%);
+    }
+    #link-music {
+      top: 64%;
+      left: 56%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* ── Fade-out transition ── */
+    #fade {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 20;
+      transition: opacity 0.6s ease;
+    }
+    #fade.active { opacity: 1; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .sign-link { width: 40vw; min-width: 100px; }
+    }
+  </style>
 </head>
-
 <body>
-    <section class="hero-section">
 
-        <!-- Background image as img tag (loads on both file:// and server) -->
-        <img src="img/bg-2.jpeg" class="hero-bg" alt="">
+  <video id="bg-video" autoplay muted playsinline loop preload="auto">
+    <source src="video/home.mp4" type="video/mp4">
+  </video>
 
-        <!-- Logo top-left -->
-        <div class="top-logo">
-            <img src="img/Richad-logo3.png" alt="Richard B Jamison" />
-        </div>
+  <div id="sign-links">
+    <a class="sign-link" id="link-bio"       href="marketing.html">Biography</a>
+    <a class="sign-link" id="link-portfolio" href="rbj-portfolio.html">Portfolio</a>
+    <a class="sign-link" id="link-music"     href="music.html">Music</a>
+  </div>
 
-        <!-- Navbar: sign image + links together so they sway as one unit -->
-        <nav class="navbar">
-            <div class="sign-wrap">
-                <img src="img/thumb_Hanging-sign-2.png" class="sign-bg" alt="">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="marketing.html">Biography</a></li>
-                    <li class="nav-item"><a class="nav-link" href="rbj-portfolio.html">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="music.html">Music</a></li>
-                </ul>
-            </div>
-        </nav>
+  <div id="fade"></div>
 
-        <!-- Billboard + chatbot: visible on desktop only, completely hidden on mobile -->
-        <div class="billborad desktop-only">
-            <img src="img/please-stand-by.gif" class="gif-image" alt="Loading">
-            <iframe src="chat-bot-code.html" frameborder="0" class="landbot"></iframe>
-            <img src="img/Billboard-Maintnance4_.png" class="billboard-image" alt="Billboard">
-        </div>
+  <script>
+    const fade  = document.getElementById('fade');
+    const video = document.getElementById('bg-video');
 
-    </section>
+    video.addEventListener('loadedmetadata', () => { video.playbackRate = 0.44; });
+    video.addEventListener('play', () => { video.playbackRate = 0.44; });
 
-    <script>
-        // Gif → chatbot swap
-        if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            setTimeout(function () {
-                var loader = document.querySelector(".gif-image");
-                if (loader) {
-                    loader.style.opacity = "0";
-                    setTimeout(function () { loader.style.display = "none"; }, 350);
-                }
-            }, 3000);
-        }
+    // Sign word clicked — fade to black and navigate
+    document.querySelectorAll('.sign-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const dest = link.getAttribute('href');
+        fade.classList.add('active');
+        setTimeout(() => { window.location.href = dest; }, 650);
+      });
+    });
+  </script>
 
-    </script>
 </body>
-
 </html>

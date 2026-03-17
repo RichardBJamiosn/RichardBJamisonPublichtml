@@ -14,8 +14,8 @@
 
   <!-- ======== NAV ======== -->
   <nav class="site-nav" id="nav">
-    <span class="nav-logo">OHM Lounge</span>
-    <a href="rbj-portfolio.html" class="nav-back">← Portfolio</a>
+    <a href="index.html" class="nav-logo">RichardBJamison</a>
+    <a href="marketing.html" class="nav-back">← Bio</a>
   </nav>
 
   <!-- ======== HERO ======== -->
@@ -30,7 +30,7 @@
       </h1>
       <p class="hero-subtitle">A Complete Transformation</p>
       <div class="hero-divider"></div>
-      <p class="hero-meta">Columbus, Ohio &nbsp;&nbsp;·&nbsp;&nbsp; Richard B. Jamison</p>
+      <p class="hero-meta">New York &nbsp;&nbsp;·&nbsp;&nbsp; Richard B. Jamison</p>
       <div class="hero-scroll-cue">
         <span>Scroll to explore</span>
         <div class="scroll-line"></div>
@@ -94,12 +94,12 @@
       </div>
 
       <div class="tab-row reveal">
-        <button class="tab-btn active" data-target="before-grid">Before</button>
-        <button class="tab-btn" data-target="after-grid">After</button>
+        <button class="tab-btn active" data-target="after-grid">After</button>
+        <button class="tab-btn" data-target="before-grid">Before</button>
       </div>
 
       <!-- BEFORE GRID -->
-      <div class="photo-grid" id="before-grid">
+      <div class="photo-grid hidden" id="before-grid">
         <div class="photo-item"><img src="img/before/1.jpg" alt="Before 1"><div class="photo-overlay"><span class="photo-num-label">Before — 01</span></div></div>
         <div class="photo-item"><img src="img/before/2.jpg" alt="Before 2"><div class="photo-overlay"><span class="photo-num-label">Before — 02</span></div></div>
         <div class="photo-item"><img src="img/before/3.jpg" alt="Before 3"><div class="photo-overlay"><span class="photo-num-label">Before — 03</span></div></div>
@@ -124,7 +124,7 @@
       </div>
 
       <!-- AFTER GRID -->
-      <div class="photo-grid hidden" id="after-grid">
+      <div class="photo-grid" id="after-grid">
         <div class="photo-item"><img src="img/after/1.jpg" alt="After 1"><div class="photo-overlay"><span class="photo-num-label">After — 01</span></div></div>
         <div class="photo-item"><img src="img/after/2.jpg" alt="After 2"><div class="photo-overlay"><span class="photo-num-label">After — 02</span></div></div>
         <div class="photo-item"><img src="img/after/3.jpg" alt="After 3"><div class="photo-overlay"><span class="photo-num-label">After — 03</span></div></div>
@@ -267,7 +267,7 @@
     <div class="container">
       <p class="footer-venue reveal">OHM Lounge</p>
       <p class="footer-tagline reveal">Interior Design &amp; Brand Experience</p>
-      <p class="footer-dates reveal">Designed &amp; Produced by Richard B. Jamison &nbsp;·&nbsp; Columbus, Ohio</p>
+      <p class="footer-dates reveal">Designed &amp; Produced by Richard B. Jamison &nbsp;·&nbsp; New York</p>
       <div class="footer-divider reveal"></div>
       <a href="rbj-portfolio.html" class="footer-back-btn reveal">← Back to Portfolio</a>
       <p class="footer-credit">richardbjamison.com</p>
@@ -324,7 +324,7 @@
 
     let currentImages = [];
     let currentIndex  = 0;
-    let activeLightboxSet = 'before';
+    let activeLightboxSet = 'after';
 
     function buildImageSet(gridId, label) {
       return Array.from(document.querySelectorAll(`#${gridId} .photo-item img`)).map((img, i) => ({
