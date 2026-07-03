@@ -39,13 +39,14 @@
 
 ### Known-good verification
 
-- `2026-07-03`: `curl -I https://richardbjamison.com/music.html` returned HTTP 200 from GitHub Pages
+- `2026-07-03`: pushed commit `43f1aed` to `main`; GitHub Pages build `1077385644` completed successfully
+- `2026-07-03`: live `https://richardbjamison.com/music.html` returns the updated `Discography hidden on this page` markup
 
 ### Open work
 
 1. Keep project registry aligned with this canonical path and ID
-2. Deploy and verify music-page changes after review
+2. Add any future page-level behavior changes here before push/deploy
 
 ### Last material update
 
-- `2026-07-03` — `CODEX` — created project handoff during music-page track-player disable work
+- `2026-07-03` — `CODEX` — created project handoff, disabled the music-page discography accordion, pushed `43f1aed`, and verified live GitHub Pages output
